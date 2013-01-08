@@ -10,15 +10,26 @@ TSQL::Common::Regexp - Contains regexps common across TSQL::AST and TSQL::SplitS
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
-sub qr_id       { return q{(?:[#_\w$@][#$:_.\w]*)} ; } ;
-sub qr_label    { return q{(?:[#_\w$@][#$:_.\w]*[:])} ; } ;
+sub qr_id               { return q{(?:[#_\w$@][#$:_.\w]*)} ; } ;
+sub qr_label            { return q{(?:[#_\w$@][#$:_.\w]*[:])} ; } ;
+
+sub qr_begintoken       { return q{(?xi:\A \s* (?:\b begin \b) \s* \z ) }                    ; } ;
+sub qr_endtoken         { return q{(?xi:\A \s* (?:\b end \b) \s* \z ) }                      ; } ;
+sub qr_begintrytoken    { return q{(?xi:\A \s* (?:\b begin \b \s+ \b try \b ) \s* \z ) }     ; } ;
+sub qr_endtrytoken      { return q{(?xi:\A \s* (?:\b end \b \s+ \b try \b ) \s*  \z ) }      ; } ;
+sub qr_begincatchtoken  { return q{(?xi:\A \s* (?:\b begin \b  \s+ \b catch \b) \s*  \z ) }  ; } ;
+sub qr_endcatchtoken    { return q{(?xi:\A \s* (?:\b end \b  \s+ \b catch \b) \s*  \z ) }    ; } ;
+sub qr_iftoken          { return q{(?xi:\A \s* (?:\b if \b) ) }                              ; } ;
+sub qr_elsetoken        { return q{(?xi:\A \s* (?:\b else \b) ) }                            ; } ;
+sub qr_GOtoken          { return q{(?xi:\A \s* (?:\b go \b) ) }                              ; } ;
+sub qr_whiletoken       { return q{(?xi:\A \s* (?:\b while \b) ) }                           ; } ;
 
 1;
 
@@ -68,6 +79,115 @@ This returns a regexp to match a TSQL label token.
 =back
 
 This returns a regexp to match a TSQL id token.
+
+=head2 C<qr_begintoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_begintoken() >>
+
+=back
+
+This returns a regexp to match a TSQL BEGIN token.
+
+
+=head2 C<qr_endtoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_endtoken() >>
+
+=back
+
+This returns a regexp to match a TSQL END token.
+
+
+=head2 C<qr_begintrytoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_begintrytoken() >>
+
+=back
+
+This returns a regexp to match a TSQL BEGIN TRY token.
+
+
+=head2 C<qr_endtrytoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_endtrytoken() >>
+
+=back
+
+This returns a regexp to match a TSQL END TRY token.
+
+
+=head2 C<qr_begincatchtoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_begincatchtoken() >>
+
+=back
+
+This returns a regexp to match a TSQL BEGIN CATCH token.
+
+
+=head2 C<qr_endcatchtoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_endcatchtoken() >>
+
+=back
+
+This returns a regexp to match a TSQL END CATCH token.
+
+
+=head2 C<qr_iftoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_iftoken() >>
+
+=back
+
+This returns a regexp to match a TSQL IF token.
+
+
+=head2 C<qr_elsetoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_elsetoken() >>
+
+=back
+
+This returns a regexp to match a TSQL ELSE token.
+
+
+=head2 C<qr_GOtoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_GOtoken() >>
+
+=back
+
+This returns a regexp to match a TSQL GO token.
+
+
+=head2 C<qr_whiletoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_whiletoken() >>
+
+=back
+
+This returns a regexp to match a TSQL WHILE token.
 
 
 =head1 LIMITATIONS
@@ -142,3 +262,5 @@ See http://dev.perl.org/licenses/ for more information.
 =cut
 
 1; # End of TSQL::Common::Regexp
+
+

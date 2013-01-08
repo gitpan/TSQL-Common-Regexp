@@ -2,3 +2,5 @@ Revision history for TSQL::Common::Regexp
 
 0.01    20/12/2012
         First version, released on an unsuspecting world.
+0.02    08/01/2013
+        Addition of simple block structure token regexps.
