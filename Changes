@@ -4,3 +4,5 @@ Revision history for TSQL::Common::Regexp
         First version, released on an unsuspecting world.
 0.02    08/01/2013
         Addition of simple block structure token regexps.
+0.03    08/01/2013
+        Addition of simple DDL token regexps. ( This change omitted from changes for the release.)

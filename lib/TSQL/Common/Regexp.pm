@@ -10,11 +10,11 @@ TSQL::Common::Regexp - Contains regexps common across TSQL::AST and TSQL::SplitS
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 sub qr_id               { return q{(?:[#_\w$@][#$:_.\w]*)} ; } ;
@@ -39,8 +39,8 @@ sub qr_createtriggertoken       { return q{(?xi:\A \s* (?: \b create \s+ trigger
 sub qr_altertriggertoken        { return q{(?xi:\A \s* (?: \b alter  \s+ trigger \b) ) }           ; } ;
 
 
-sub qr_createviewtoken          { return q{(?xi:\A \s* (?: \b create \s+ view \b) }                ; } ;
-sub qr_alterviewtoken           { return q{(?xi:\A \s* (?: \b alter  \s+ view \b) }                ; } ;
+sub qr_createviewtoken          { return q{(?xi:\A \s* (?: \b create \s+ view \b) ) }                ; } ;
+sub qr_alterviewtoken           { return q{(?xi:\A \s* (?: \b alter  \s+ view \b) ) }                ; } ;
 
 
 sub qr_createfunctiontoken      { return q{(?xi:\A \s* (?: \b create \s+ function \b) ) }          ; } ;
