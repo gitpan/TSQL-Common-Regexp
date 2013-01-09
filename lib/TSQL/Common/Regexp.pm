@@ -10,11 +10,11 @@ TSQL::Common::Regexp - Contains regexps common across TSQL::AST and TSQL::SplitS
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 sub qr_id               { return q{(?:[#_\w$@][#$:_.\w]*)} ; } ;
@@ -31,10 +31,24 @@ sub qr_elsetoken        { return q{(?xi:\A \s* (?:\b else \b) ) }               
 sub qr_GOtoken          { return q{(?xi:\A \s* (?:\b go \b) ) }                              ; } ;
 sub qr_whiletoken       { return q{(?xi:\A \s* (?:\b while \b) ) }                           ; } ;
 
+
+sub qr_createproceduretoken     { return q{(?xi:\A \s* (?: \b create \s+ proc (?:edure)? \b) ) }   ; } ;
+sub qr_alterproceduretoken      { return q{(?xi:\A \s* (?: \b alter  \s+ proc (?:edure)? \b) ) }   ; } ;
+
+sub qr_createtriggertoken       { return q{(?xi:\A \s* (?: \b create \s+ trigger \b) ) }           ; } ;
+sub qr_altertriggertoken        { return q{(?xi:\A \s* (?: \b alter  \s+ trigger \b) ) }           ; } ;
+
+
+sub qr_createviewtoken          { return q{(?xi:\A \s* (?: \b create \s+ view \b) }                ; } ;
+sub qr_alterviewtoken           { return q{(?xi:\A \s* (?: \b alter  \s+ view \b) }                ; } ;
+
+
+sub qr_createfunctiontoken      { return q{(?xi:\A \s* (?: \b create \s+ function \b) ) }          ; } ;
+sub qr_alterfunctiontoken       { return q{(?xi:\A \s* (?: \b alter  \s+ function \b) ) }          ; } ;
+
 1;
 
 __DATA__
-
 
 
 =head1 SYNOPSIS
@@ -190,6 +204,92 @@ This returns a regexp to match a TSQL GO token.
 This returns a regexp to match a TSQL WHILE token.
 
 
+
+
+
+=head2 C<qr_createproceduretoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_createproceduretoken() >>
+
+=back
+
+This returns a regexp to match the start of a TSQL CREATE PROCEDURE statement.
+
+=head2 C<qr_alterproceduretoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_alterproceduretoken() >>
+
+=back
+
+This returns a regexp to match the start of a TSQL ALTER PROCEDURE statement.
+
+=head2 C<qr_createtriggertoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_createtriggertoken() >>
+
+=back
+
+This returns a regexp to match the start of a TSQL CREATE TRIGGER statement.
+
+=head2 C<qr_altertriggertoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_altertriggertoken() >>
+
+=back
+
+This returns a regexp to match the start of a TSQL ALTER TRIGGER statement.
+
+=head2 C<qr_createviewtoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_createviewtoken() >>
+
+=back
+
+This returns a regexp to match the start of a TSQL CREATE VIEW statement.
+
+=head2 C<qr_alterviewtoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_alterviewtoken() >>
+
+=back
+
+This returns a regexp to match the start of a TSQL ALTER VIEW statement.
+
+=head2 C<qr_createfunctiontoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_createfunctiontoken() >>
+
+=back
+
+This returns a regexp to match the start of a TSQL CREATE FUNCTION statement.
+
+=head2 C<qr_alterfunctiontoken>
+
+=over 4
+
+=item * C<< TSQL::Common::Regexp->qr_alterfunctiontoken() >>
+
+=back
+
+This returns a regexp to match the start of a TSQL ALTER FUNCTION statement.
+
+
+
+
 =head1 LIMITATIONS
 
 No limitations are currently known.
@@ -262,5 +362,6 @@ See http://dev.perl.org/licenses/ for more information.
 =cut
 
 1; # End of TSQL::Common::Regexp
+
 
 
