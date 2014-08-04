@@ -10,11 +10,11 @@ TSQL::Common::Regexp - Contains regexps common across TSQL::AST and TSQL::SplitS
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 
 sub qr_id               { return q{(?:[#_\w$@][#$:_.\w]*)} ; } ;
